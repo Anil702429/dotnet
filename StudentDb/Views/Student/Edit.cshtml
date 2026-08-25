@@ -1,0 +1,33 @@
+@model StudentDb.Models.Student
+
+@{
+    ViewBag.Title = "Edit Student";
+}
+
+<h2>Edit Student</h2>
+
+@using (Html.BeginForm("Edit", "Student", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+            @Html.EditorFor(model => model.Name,
+                new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age, new { @class = "control-label" })
+            @Html.EditorFor(model => model.Age,
+                new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+        </div>
+
+        <br />
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary ms-2" })
+    </div>
+}

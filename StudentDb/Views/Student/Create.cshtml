@@ -1,0 +1,56 @@
+﻿@model StudentDb.Models.Student
+
+@{
+    ViewBag.Title = "Create Student";
+}
+
+<h2>Create Student</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name,
+                htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name,
+                    new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(model => model.Name,
+                    "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age,
+                htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Age,
+                    new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(model => model.Age,
+                    "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit"
+                       value="Create"
+                       class="btn btn-primary" />
+            </div>
+        </div>
+
+    </div>
+}
+
+<br />
+
+@Html.ActionLink("Back to List", "Index")
